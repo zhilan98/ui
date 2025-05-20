@@ -28,7 +28,7 @@ public class ItemSpriteSheet {
 
 	private static final int WIDTH = 16;
 	public static final int SIZE = 16;
-
+	public static final int CHARM_MUSHROOM = 90;
 	public static TextureFilm film = new TextureFilm( Assets.Sprites.ITEMS, SIZE, SIZE );
 
 	private static int xy(int x, int y){
@@ -63,6 +63,7 @@ public class ItemSpriteSheet {
 	public static final int MOB_HOLDER      = PLACEHOLDERS+16;
 	public static final int DOCUMENT_HOLDER = PLACEHOLDERS+17;
 	static{
+		assignItemRect(CHARM_MUSHROOM,  16, 16);
 		assignItemRect(SOMETHING,       8,  13);
 		assignItemRect(WEAPON_HOLDER,   14, 14);
 		assignItemRect(ARMOR_HOLDER,    14, 12);
