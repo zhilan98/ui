@@ -48,7 +48,13 @@ public class SPDSettings extends GameSettings {
 	}
 	
 	//Display
-	
+	public static boolean levelSkipUnlocked() {
+		return SPDSettings.getBoolean("level_skip", false);
+	}
+
+	public static void levelSkipUnlocked(boolean value) {
+		SPDSettings.put("level_skip", value);
+	}
 	public static final String KEY_FULLSCREEN	= "fullscreen";
 	public static final String KEY_LANDSCAPE	= "landscape";
 	public static final String KEY_POWER_SAVER 	= "power_saver";
@@ -104,7 +110,7 @@ public class SPDSettings extends GameSettings {
 		put( KEY_BRIGHTNESS, value );
 		GameScene.updateFog();
 	}
-	
+
 	public static int brightness() {
 		return getInt( KEY_BRIGHTNESS, 0, -1, 1 );
 	}
@@ -232,7 +238,7 @@ public class SPDSettings extends GameSettings {
 	}
 
 	//Game State
-	
+
 	public static final String KEY_LAST_CLASS	= "last_class";
 	public static final String KEY_CHALLENGES	= "challenges";
 	public static final String KEY_CUSTOM_SEED	= "custom_seed";

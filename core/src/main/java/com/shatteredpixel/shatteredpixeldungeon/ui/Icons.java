@@ -137,7 +137,7 @@ public enum Icons {
 	public Image get() {
 		return get( this );
 	}
-	
+	public static final int SKIP = 31; // Choose an appropriate icon index
 	public static Image get( Icons type ) {
 		Image icon = new Image( Assets.Interfaces.ICONS );
 		switch (type) {

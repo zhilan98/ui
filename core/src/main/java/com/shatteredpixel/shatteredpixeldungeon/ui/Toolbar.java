@@ -55,11 +55,11 @@ import com.watabou.noosa.PointerArea;
 import com.watabou.noosa.ui.Component;
 import com.watabou.utils.Point;
 import com.watabou.utils.PointF;
-
+import com.shatteredpixel.shatteredpixeldungeon.ui.LevelSkipButton;
 import java.util.ArrayList;
 
 public class Toolbar extends Component {
-
+	private LevelSkipButton btnSkip;
 	private Tool btnWait;
 	private Tool btnSearch;
 	private Tool btnInventory;
@@ -95,6 +95,8 @@ public class Toolbar extends Component {
 
 	@Override
 	protected void createChildren() {
+		btnSkip = new LevelSkipButton();
+		add(btnSkip);
 
 		add(btnSwap = new SlotSwapTool(128, 0, 21, 23));
 
@@ -373,7 +375,7 @@ public class Toolbar extends Component {
 				super.layout();
 				ind.fill(this);
 				bringToFront(ind);
-
+				btnSkip.setPos(width - btnInventory.right() - btnSkip.width(), y);
 				arrow.x = left() + (width - arrow.width())/2;
 				arrow.y = bottom()-arrow.height-1;
 				arrow.angle = bottom() == camera().height ? 0 : 180;

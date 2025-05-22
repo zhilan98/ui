@@ -21,11 +21,7 @@
 
 package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
 
-import com.shatteredpixel.shatteredpixeldungeon.Assets;
-import com.shatteredpixel.shatteredpixeldungeon.Badges;
-import com.shatteredpixel.shatteredpixeldungeon.Challenges;
-import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
-import com.shatteredpixel.shatteredpixeldungeon.Statistics;
+import com.shatteredpixel.shatteredpixeldungeon.*;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
 import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Adrenaline;
@@ -867,7 +863,19 @@ public abstract class Mob extends Char {
 	
 	@Override
 	public void die( Object cause ) {
+		// It would be in the section with RingOfWealth bonus drops
+		if (Ring.getBuffedBonus(Dungeon.hero, RingOfWealth.Wealth.class) > 0) {
+			int rolls = 1;
+			if (properties.contains(Property.BOSS)) {
+				rolls = 15;
 
+				// Add level skip unlock here
+				SPDSettings.levelSkipUnlocked(true);
+				GLog.p(Messages.get(this, "level_skip_unlocked"));
+			}
+			else if (properties.contains(Property.MINIBOSS)) rolls = 5;
+			// ...rest of the method...
+		}
 		if (cause == Chasm.class){
 			//50% chance to round up, 50% to round down
 			if (EXP % 2 == 1) EXP += Random.Int(2);
